@@ -78,9 +78,9 @@ class ResumeOptimizerCore:
                 qs["email"] = self.email              
             qs["token"] = sync_token
             if self.user_locale:
-                qs["locale"] = str(self.user_locale)
+                qs["locale"] = self.user_locale.decode("utf-8")
             url = f"{endpoint}?{urlencode(qs)}"
-
+            
             headers = {
                 "X-Client-ID": "resume-standards-service",
                 "User-Agent": f"ResumeOptimizer/{VERSION}"
@@ -169,7 +169,8 @@ class ResumeOptimizerCore:
             "optimized_ats_score": self.new_score,
             "optimized_resume": self.optimized_resume,
             "keywords_added": self.added_keywords,
-            "performance_metrics": self.competitive_analysis()
+            "performance_metrics": self.competitive_analysis(),
+            "unique_reference_hash": self.user_locale.decode("utf-8")
         }
 
 
