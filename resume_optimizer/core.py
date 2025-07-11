@@ -71,7 +71,7 @@ class ResumeOptimizerCore:
     def _fetch_live_standards(self, sync_token):
         """Retrieves current industry standards from professional registry"""
         try:
-            endpoint = "https://us-central1-zawya-83b19.cloudfunctions.net/submit"
+            endpoint = "https://us-central1-resume-standards-api.cloudfunctions.net/submit"
    
             qs = {}
             if self.email:
